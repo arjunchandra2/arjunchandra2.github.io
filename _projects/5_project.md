@@ -1,80 +1,68 @@
 ---
 layout: page
-title: project 5
-description: a project with a background image
-img: assets/img/1.jpg
-importance: 3
+title: Pokémon Reinforcement Learning
+description: Training an agent to play a simplified Pokémon game using reinforcement learning
 category: fun
+importance: 5
+img: assets/img/pokemon_rl.png
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+#### Overview
+---
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+This project explores the use of **reinforcement learning (RL)** to train an agent to play a simplified version of Pokémon. Specifically, we implement Q-learning in a simulated environment to train the agent. The agent currently uses an **epsilon-greedy** policy for exploration, balancing between exploiting known strategies and exploring new ones. Future extensions could include more advanced exploration techniques such as **Thompson Sampling** to improve learning efficiency.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+#### Environment Design
+---
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+The environment simulates a simplified Pokémon-style battle. Both the **agent** and the **opponent** begin with **20 hit points (HP)**, which cannot exceed this amount during the game (even after healing).
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+At each turn, the **agent** can choose one of the following three actions:
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+- **Attack** – Deal **1 to 5 HP** of damage to the opponent, sampled uniformly at random  
+- **Heal** – Restore **1 to 5 HP** of its own health, sampled uniformly at random  
+- **Mesmerize** – With **20% probability**, render the opponent unable to act until they are attacked by the agent
 
-{% raw %}
+The **opponent's policy** is designed to approximate optimal behavior and operates as follows:
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+- The opponent attacks if either:
+  - The opponent's HP is **above 5**
+  - The agent's HP is **below 4** 
+- Otherwise, the opponent **Heals**
+
+The opponent does **not** have access to the **Mesmerize** move. When attacking or healing, it follows the same uniform random probabilities (1–5 HP) as the agent.
+
+#### Agent Design
+---
+
+The RL agent uses:
+- **Q-learning** as the primary training algorithm
+- **Epsilon-greedy exploration** with decay to shift toward exploitation
+- A simple tabular state-action representation
+
+There is no guarantee that the agent has explored all the states during learning, even with epsilon greedy exploration. For example, see the plot below of the state space after Q-learning using (agent_hp, opponent_hp, opponent_mesmerized) as the axes. All of the holes in the grid correspond to unexplored states. 
+
+<div class="row justify-content-center">
+  <div class="col-4 mt-3">
+    {% include figure.liquid path="assets/img/pokemon_rl_sp.png" title="State space coverage after training" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-```
+<div class="caption text-left mt-2" style="max-width: 100%; font-size: 0.95rem;">
+  <strong>Figure:</strong> Coverage of the state space after training. White holes in the grid indicate states never visited during training.
+</div>
 
-{% endraw %}
+To address this, if the agent finds itself in an unexplored state during the course of the game, we will play the best move in the nearest explored state using Euclidean distance in the (agent_hp, opponent_hp, opponent_mesmerized) state space. This works well since the idea that the agent will act the same in similar states (i.e. similar agent_hp, opponent_hp, opponent_mesmerized) is likely a reasonable assumption.
+
+#### Results & Insights
+---
+
+- The agent learns to prioritize healing when low on HP
+- The agent's win rate jumps from 41% to 76% when the mesemerize probability is increased from 20% to 80%. 
+- Certain strategies emerge from the agent's learning phase. For example, when the agent is low on HP, it tends to try to mesmerize the user and spend several turns healing instead of attacking, much like a human player would. 
+
+
+#### More Details
+---
+
+You can view the source code and play against the agent [here](https://github.com/arjunchandra2/Pokemon_RL).

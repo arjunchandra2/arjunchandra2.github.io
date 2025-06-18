@@ -1,80 +1,52 @@
 ---
 layout: page
-title: project 4
-description: another without an image
-img:
-importance: 3
+title: Intelligent Waste Detection for Sustainability
+description: A machine learning system for identifying contamination and improving recycling at scale
 category: fun
+img: assets/img/549_cover.png 
+importance: 4
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+#### Overview
+---
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+**Spare-it** is a Boston based startup that helps businesses, universities, and office spaces track and reduce workspace waste—from general trash to recycling, electronics, water, energy, and travel. Their mission is to drive sustainability through **awareness, engagement, and actionable insights**.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+This project supports Spare-it’s mission by developing a machine learning system that identifies **waste contamination** and uncovers **missed recycling opportunities**. Using real-time data and computer vision, the system provides organizations with tools to improve waste management practices and encourage behavior change.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+#### Project Objectives
+---
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+Our goals were to:
+- Predict contamination events in recycling streams
+- Detect incorrectly sorted waste using image classification
+- Analyze historical trends to identify key areas for waste reduction
+- Deploy a model that integrates into Spare-it’s platform for real-time feedback
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+#### Technical Approach
+---
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+We divided our pipeline into several core components:
 
-{% raw %}
+- **Image Collection & Preprocessing**  
+  Waste stream imagery was gathered from smart bins and edge devices. Images were cleaned, labeled, and preprocessed for model training.
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
+- **Model Training & Evaluation**  
+  We used object detection and segmentation techniques (i.e, YOLO) to distinguish between recyclable and non-recyclable items, and detect contamination.
 
-{% endraw %}
+- **Deployment & Integration**  
+  The trained model was deployed to Hugging Face and made publicly available. 
+
+#### Key Outcomes
+---
+
+- Achieved high accuracy on contamination detection across diverse workspace environments
+- Demonstrated reduction in contamination rates after system deployment
+- Enabled real-time dashboard updates for awareness and accountability
+- Supported Spare-it’s broader mission with a replicable ML pipeline
+
+#### More Details
+---
+
+The full technical overview and results are available [here](/assets/pdf/549_poster.pdf). The Hugging Face demo is [here](https://huggingface.co/spaces/hengc/Spare-it_fall24) and code can be found [here](https://github.com/BU-Spark/ml-spare-it-contamination). This project was completed as part of BU Spark! in collaboration with Devon Solheim, Heng Chang, and Tia Hannah from Boston University as well as the Spare-it team.
+

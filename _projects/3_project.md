@@ -1,81 +1,41 @@
 ---
 layout: page
-title: project 3 with very long name
-description: a project that redirects to another website
-img: assets/img/7.jpg
-redirect: https://unsplash.com
+title: Lattice-Based Post-Quantum Cryptography
+description: A study of LWE-based cryptosystems and their role in building quantum-safe encryption
+category: fun
+img: assets/img/536_cover.png  # Replace with a relevant image or remove this line
 importance: 3
-category: work
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+#### Overview
+---
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+Quantum computers, once a theoretical concept, are rapidly becoming a practical reality—posing a serious threat to modern cryptographic systems. Classical public-key schemes such as RSA rely on problems that quantum algorithms like Shor’s can efficiently solve.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+In response, researchers have proposed **post-quantum cryptographic protocols**, with **lattice-based cryptography** emerging as one of the most promising and well-studied candidates.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+This project explores the foundations and recent developments in lattice-based protocols, focusing on their quantum resistance and practical viability.
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+#### From Lattices to Learning With Errors (LWE)
+---
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+We begin by introducing basic lattice theory and the **Learning With Errors (LWE)** problem—a hard computational problem that forms the backbone of many lattice-based schemes.
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+- LWE is the task of solving a system of noisy linear equations 
+- LWE is provably as hard as worst-case lattice problems like GapSVP and SIVP.
+- The LWE hardness assumption is conjectured to remain secure even against quantum computers.
 
-{% raw %}
+#### Applications: Key Encapsulation & Encryption
+---
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
+The hardness of LWE has enabled the construction of secure **key encapsulation mechanisms (KEMs)** and public-key encryption systems. The full write-up waks through:
 
-{% endraw %}
+- A simple LWE-based encryption scheme
+- Extensions of LWE that are useful in practice
+- Practical considerations for side-channel attacks
+
+#### More Details
+---
+
+The full write-up is available [here](/assets/pdf/py536_report.pdf).
+

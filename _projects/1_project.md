@@ -1,81 +1,155 @@
 ---
 layout: page
-title: project 1
-description: with background image
-img: assets/img/12.jpg
+title: Compositional Reasoning in VLMs
+description: A hard negative fine-tuning method to improve compositional reasoning in CLIP 
+img: assets/img/cs598.png
 importance: 1
-category: work
-related_publications: true
+category: fun
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+#### Overview
+---
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images, even citations {% cite einstein1950meaning %}.
-Say you wanted to write a bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+<div class="row align-items-center mt-4">
+  <!-- Left column: Text -->
+  <div class="col-md-7">
+    <p>
+      Vision-language models (VLMs) have achieved remarkable success in zero-shot recognition tasks. However, their ability to perform <strong>compositional reasoning</strong>—understanding the relationships between objects, attributes, and spatial configurations—remains limited. On the right are examples of the kinds of compositional reasoning tasks these models struggle with.
+    </p>
+    <p>
+      While recent fine-tuning methods aim to address this, our analysis reveals that improvements often stem from exploiting <em>simplistic negative captions</em>, rather than encouraging genuine reasoning.
+    </p>
   </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+
+  <!-- Right column: Image -->
+  <div class="col-md-4 text-center">
+    {% include figure.liquid path="assets/img/cs598.png" title="Examples of compositional reasoning tasks" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-```
 
-{% endraw %}
+
+
+
+#### Our Approach: High-quality Targeted Caption Generation
+---
+
+We propose a new fine-tuning framework called **High-quality Targeted Caption Generation** (HTCG). The key idea is to use **semantically coherent** positive and negative captions, specifically crafted to teach models about the fine-grained structure of visual scenes.
+
+This method not only encourages better alignment between text and image, but also builds the capacity for **true compositional understanding**.
+
+<div class="row justify-content-center">
+  <div class="col-12 mt-3">
+    {% include figure.liquid path="assets/img/cs598_method.png" title="Proposed method" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption text-left mt-2" style="max-width: 100%; font-size: 0.95rem;">
+  <strong>Figure:</strong> Overview of our proposed approach. We first generate high-quality captions for 1.7M images from the Open Images dataset. Positive captions are generated using BLIP-2-6.7b to ensure alignment with the visual content, while negative captions are generated by Mistral-7B-Instruct-v0.3 to be compositionally distinct from the positive caption while remaining semantically coherent. The generated captions are then used to fine-tune the base ViT-B-32 model.
+</div>
+
+
+
+
+#### Key Results
+---
+
+Our experiments show:
+- Improved performance on challenging compositional reasoning benchmarks, including SOTA performance on SugarCrepe at the time of writing.
+- Clear benefits in *caption quality* over brute-force dataset scaling.
+- A promising pathway toward VLMs that reason more like humans do—by understanding the structure of what they see.
+
+<table class="table table-bordered table-hover table-sm" style="width: 100%; font-size: 0.9rem;">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3">Challenging Benchmarks</th>
+      <th colspan="2">Hackable Benchmarks</th>
+    </tr>
+    <tr>
+      <th>Model</th>
+      <th>ColorSwap</th>
+      <th>SugarCrepe</th>
+      <th>Winoground</th>
+      <th>ARO</th>
+      <th>CREPE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ViT-B-32</td>
+      <td>0.137</td>
+      <td>0.765</td>
+      <td>0.080</td>
+      <td>0.588</td>
+      <td>0.648</td>
+    </tr>
+    <tr>
+      <td>NegCLIP</td>
+      <td>0.183</td>
+      <td>0.837</td>
+      <td>0.080</td>
+      <td>0.801</td>
+      <td>0.303</td>
+    </tr>
+    <tr>
+      <td>CLoVe</td>
+      <td><strong>0.186</strong></td>
+      <td>0.845</td>
+      <td>0.065</td>
+      <td>0.829</td>
+      <td>0.416</td>
+    </tr>
+    <tr>
+      <td>CE-CLIP</td>
+      <td>0.133</td>
+      <td>0.856</td>
+      <td>0.0525</td>
+      <td>0.763</td>
+      <td>0.346</td>
+    </tr>
+    <tr>
+      <td>GNM-CLIP</td>
+      <td>0.126</td>
+      <td>0.787</td>
+      <td><strong>0.103</strong></td>
+      <td>0.571</td>
+      <td>0.173</td>
+    </tr>
+    <tr>
+      <td>TSVLC</td>
+      <td>0.107</td>
+      <td>0.769</td>
+      <td>0.0675</td>
+      <td><strong>0.835</strong></td>
+      <td>0.359</td>
+    </tr>
+    <tr>
+      <td>DAC-SAM</td>
+      <td>0.122</td>
+      <td>0.866</td>
+      <td>0.080</td>
+      <td>0.725</td>
+      <td><strong>0.902</strong></td>
+    </tr>
+    <tr>
+      <td><strong>HTCG</strong></td>
+      <td>0.159</td>
+      <td><strong>0.897</strong></td>
+      <td>0.070</td>
+      <td>0.666</td>
+      <td>0.777</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Table:</strong> Comparison of fine-tuning methods on compositional reasoning benchmarks (ColorSwap, SugarCrepe, Winoground) and hackable benchmarks (ARO, CREPE). All models use the base OpenAI CLIP ViT-B-32. Metrics vary by benchmark: text score or group score.</p>
+
+
+
+#### More Details
+---
+
+The full write-up can be found [here](/assets/pdf/cs598_report.pdf). This project was done in collaboration with Patrick Lutz and Adivk Vyas at Boston University. 
+
+
