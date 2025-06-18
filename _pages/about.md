@@ -28,7 +28,7 @@ social: true # includes social icons at the bottom of the page
 ---
 
 
-Hello! I am a visiting research fellow in the Boston University Department of Electrical & Computer Engineering advised by [Venkatesh Saligrama](https://venkatesh-saligrama.github.io/). My current research focuses on improving compositional reasoning in vision language models. 
+Hello! I am a visiting AI research fellow in the Boston University Department of Electrical & Computer Engineering advised by [Venkatesh Saligrama](https://venkatesh-saligrama.github.io/). My current research focuses on improving compositional reasoning in vision language models. 
 
 <!-- I also work with [Aldo Pacchiano](https://www.aldopacchiano.ai/) on sample efficient RLHF.  -->
 
