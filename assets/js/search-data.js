@@ -67,6 +67,16 @@ ninja.data = [{
           description: "Training an agent to play a simplified Pokémon game using reinforcement learning",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_project.html";
+            },},{id: "projects-visualizing-particle-trajectories-in-electric-fields",
+          title: 'Visualizing Particle Trajectories in Electric Fields',
+          description: "Simulating the trajectory of a charged particle in an Electric field via Euler&#39;s method",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/6_project.html";
+            },},{id: "projects-predicting-a-linear-congruential-generator",
+          title: 'Predicting a Linear Congruential Generator',
+          description: "Simulating the trajectory of a charged particle in an Electric field via Euler&#39;s method",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/7_project.html";
             },},{
         id: 'social-email',
         title: 'email',
