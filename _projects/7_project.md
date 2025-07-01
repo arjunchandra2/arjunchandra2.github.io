@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Predicting a Linear Congruential Generator
-description: Simulating the trajectory of a charged particle in an Electric field via Euler's method
+description: Predicting a sequence of psuedorandom numbers using different neural network architectures and training strategies
 category: fun
 importance: 7
 img: assets/img/340_cover.png
