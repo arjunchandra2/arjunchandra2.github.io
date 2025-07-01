@@ -74,7 +74,7 @@ ninja.data = [{
               window.location.href = "/projects/6_project.html";
             },},{id: "projects-predicting-a-linear-congruential-generator",
           title: 'Predicting a Linear Congruential Generator',
-          description: "Simulating the trajectory of a charged particle in an Electric field via Euler&#39;s method",
+          description: "Predicting a sequence of psuedorandom numbers using different neural network architectures and training strategies",
           section: "Projects",handler: () => {
               window.location.href = "/projects/7_project.html";
             },},{
