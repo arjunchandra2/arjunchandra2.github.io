@@ -37,10 +37,24 @@
   ],
   "publications": [
     {
-      "name": "Grounding Pixels in Facts: Distilled Knowledge Retrieval for Factual Text-to-Video Generation",
-      "publisher": "CVPR 2025 Demonstration Program",
-      "releaseDate": "2025-06",
-      "url": "https://cvpr.thecvf.com/virtual/2025/demonstration/35933",
+      "name": "BabyVLM-V2: Toward Developmentally Grounded Pretraining and Benchmarking of Vision Foundation Models",
+      "publisher": "Under Review",
+      "releaseDate": "2025-12",
+      "url": "https://arxiv.org/abs/2512.10932",
+      "summary": ""
+    },
+    {
+      "name": "Dimension-First Evaluation of Voice Assistants: Human Chain-of-Thought and Structured Judges",
+      "publisher": "Under Review",
+      "releaseDate": "2025-12",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "name": "Accelerating Myelin Defect Detection in Neurodegenerative Disorders: A Human-in-the-Loop Deep Learning Approach with Birefringence Microscopy",
+      "publisher": "Neurophotonics",
+      "releaseDate": "2025-11",
+      "url": "https://doi.org/10.1117/1.NPh.12.4.045007",
       "summary": ""
     },
     {
@@ -51,13 +65,6 @@
       "summary": ""
     },
     {
-      "name": "Rewind and Render: Towards Factually Accurate Text-to-Video Generation with Distilled Knowledge Retrieval",
-      "publisher": "AAAI 2025 Demonstration Program",
-      "releaseDate": "2025-03",
-      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/35356",
-      "summary": ""
-    },
-    {
       "name": "Imaging myelin degradation in ex vivo prefrontal cortex tissue blocks in Alzheimer's disease and chronic traumatic encephalopathy",
       "publisher": "Alzheimer's & Dementia",
       "releaseDate": "2025-08",
@@ -65,10 +72,17 @@
       "summary": ""
     },
     {
-      "name": "Accelerating Myelin Defect Detection in Neurodegenerative Disorders: A Human-in-the-Loop Deep Learning Approach with Birefringence Microscopy",
-      "publisher": "Neurophotonics",
-      "releaseDate": "2025-11",
-      "url": "https://doi.org/10.1117/1.NPh.12.4.045007",
+      "name": "Grounding Pixels in Facts: Distilled Knowledge Retrieval for Factual Text-to-Video Generation",
+      "publisher": "CVPR 2025 Demonstration Program",
+      "releaseDate": "2025-06",
+      "url": "https://cvpr.thecvf.com/virtual/2025/demonstration/35933",
+      "summary": ""
+    },
+    {
+      "name": "Rewind and Render: Towards Factually Accurate Text-to-Video Generation with Distilled Knowledge Retrieval",
+      "publisher": "AAAI 2025 Demonstration Program",
+      "releaseDate": "2025-03",
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/35356",
       "summary": ""
     }
   ],
