@@ -181,9 +181,17 @@
     <div class="periodical">
       {{ periodical | strip }}
     </div>
+    {% if entry.note %}
+  {% if entry.note contains "Highlighted" %}
+    <div class="periodical" style="color: red; font-weight: 500;">
+      {{ entry.note | strip }}
+    </div>
+  {% else %}
     <div class="periodical">
       {{ entry.note | strip }}
     </div>
+  {% endif %}
+  {% endif %}
 
     <!-- Links/Buttons -->
     <div class="links">
