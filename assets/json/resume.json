@@ -38,16 +38,16 @@
   "publications": [
     {
       "name": "BabyVLM-V2: Toward Developmentally Grounded Pretraining and Benchmarking of Vision Foundation Models",
-      "publisher": "Under Review",
-      "releaseDate": "2025-12",
+      "publisher": "CVPR 2026",
+      "releaseDate": "2026-06",
       "url": "https://arxiv.org/abs/2512.10932",
       "summary": ""
     },
     {
       "name": "Hearing Between the Lines: Unlocking the Reasoning Power of LLMs for Speech Evaluation",
       "publisher": "EACL 2026 Findings",
-      "releaseDate": "2026-01",
-      "url": "",
+      "releaseDate": "2026-03",
+      "url": "https://arxiv.org/abs/2601.13742",
       "summary": ""
     },
     {
