@@ -49,3 +49,8 @@ scholar_userid: CtwnNc4AAAAJ # your Google Scholar ID
 #   logo: https://www.alberteinstein.com/wp-content/uploads/2024/03/cropped-favicon-192x192.png # can be png, svg, jpg
 #   title: Custom Social
 #   url: https://www.alberteinstein.com/
+
+custom_social:
+    title: CV
+    url: /assets/pdf/cv.pdf
+    logo: https://icons.iconarchive.com/icons/academicons-team/academicons/256/cv-icon.png
