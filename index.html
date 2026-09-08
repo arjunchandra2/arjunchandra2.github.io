@@ -805,7 +805,7 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    Arjun Chandra &middot; Palo Alto, CA &middot; Last updated June 2026
+    Arjun Chandra &middot; Palo Alto, CA &middot; Last updated <span id="last-updated">June 2026</span>
   </div>
 
 </div><!-- .sheet -->
@@ -1059,6 +1059,22 @@
       }
     });
   });
+</script>
+
+<script>
+  // Show the month/year of the site's most recent GitHub push, so the
+  // footer stays accurate without needing a rebuild on every deploy.
+  fetch('https://api.github.com/repos/arjunchandra2/arjunchandra2.github.io/commits/main')
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      var dateStr = data && data.commit && data.commit.committer && data.commit.committer.date;
+      if (!dateStr) return;
+      var d = new Date(dateStr);
+      var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      var el = document.getElementById('last-updated');
+      if (el) el.textContent = months[d.getMonth()] + ' ' + d.getFullYear();
+    })
+    .catch(function() { /* leave the fallback date in place */ });
 </script>
 
 </body>
