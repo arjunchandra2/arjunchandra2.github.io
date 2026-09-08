@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arjun Chandra</title>
+  <meta name="description" content="Arjun Chandra — CS PhD student at Stanford University, working at the intersection of machine learning and cognitive science.">
+  <link rel="icon" type="image/png" href="img/misc/stanford_favicon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Arjun Chandra">
+  <meta property="og:description" content="CS PhD student at Stanford University, working at the intersection of machine learning and cognitive science.">
+  <meta property="og:image" content="https://arjunchandra2.github.io/img/misc/prof_pic.jpg">
+  <meta property="og:url" content="https://arjunchandra2.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arjun Chandra">
+  <meta name="twitter:description" content="CS PhD student at Stanford University, working at the intersection of machine learning and cognitive science.">
+  <meta name="twitter:image" content="https://arjunchandra2.github.io/img/misc/prof_pic.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pad-x: 4rem;
+      --paper: #ffffff;
+      --text:  #000000;
+      --sub:   #1a1208;
+      --link:  #7a3518;
+      --link-h:#b04010;
+      --border: rgba(0,0,0,0.07);
+    }
+
+    html { scroll-behavior: smooth; font-size: 17px; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+      line-height: 1.72;
+      background: var(--paper);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PAPER SHEET ── */
+    .outer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.05rem 0 7rem;
+    }
+
+    .sheet {
+      background: var(--paper);
+      padding: 3.2rem var(--pad-x) 3.8rem;
+    }
+
+    /* ── BASE TYPOGRAPHY ── */
+    .sheet p   { color: var(--text); margin-bottom: 0.9rem; }
+    .sheet p:last-child { margin-bottom: 0; }
+    .sheet strong { font-weight: 600; }
+
+    .sheet a {
+      color: var(--link);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }
+    .sheet a:hover { color: var(--link-h); }
+
+    .sheet code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.87em;
+      background: rgba(0,0,0,0.05);
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .hero-header {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .hero-photo-fallback {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: var(--sub);
+      flex-shrink: 0;
+    }
+
+    .hero-text { }
+
+    .hero-name {
+      font-size: 2.4rem;
+      font-weight: 500;
+      color: #1a1208;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-title {
+      font-size: 1.1rem;
+      color: var(--sub);
+    }
+
+    .hero-bio {
+      font-size: 1.02rem;
+      color: var(--text);
+      line-height: 1.78;
+    }
+    .hero-bio p { margin-bottom: 0.75rem; }
+
+    .social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem 1.1rem;
+      margin-top: 1rem;
+    }
+
+    .social a {
+      font-size: 0.88rem;
+      color: #5a3a18;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(90,58,24,0.28);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .social a i { font-size: 0.78rem; }
+    .social a:hover { color: var(--link-h); border-color: var(--link-h); }
+
+    /* ── RESEARCH SECTION ── */
+    .research-section { margin-top: 0; }
+
+    .tabs-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 2.2rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .research-heading {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2a1a08;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      user-select: none;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid transparent;
+    }
+
+    .research-heading.active {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel { display: none; }
+    .panel.open { display: block; }
+
+    .brush {
+      position: relative;
+      display: inline-block;
+      z-index: 0;
+      padding: 0 0.05em;
+    }
+    .brush svg {
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      top: -22%;
+      bottom: -18%;
+      width: 116%;
+      height: 140%;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.6;
+      mix-blend-mode: multiply;
+    }
+    .brush-gold svg { fill: #e0a83c; transform: rotate(-1.6deg); }
+    .brush-coral svg { fill: #d9755a; transform: rotate(1.3deg); }
+    .brush-sage svg { fill: #7f9e6e; transform: rotate(-1deg); }
+
+    .research-body {
+      padding-top: 0.2rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-row {
+      display: flex;
+      gap: 1.4rem;
+      margin-bottom: 1.6rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .exp-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .exp-logo {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .exp-logo img { width: 40px; height: 40px; object-fit: contain; }
+
+    .exp-meta { flex: 1; }
+
+    .exp-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .exp-org {
+      color: #2a1a08;
+      font-size: 0.97rem;
+      font-weight: 600;
+    }
+
+    .exp-title {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.85rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-dates {
+      font-size: 0.83rem;
+      color: #9a7050;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--text);
+      list-style: none;
+      padding-left: 0;
+    }
+    .exp-desc li { margin-bottom: 0.25rem; }
+    .exp-desc li:last-child { margin-bottom: 0; }
+
+    /* ── LIFE ── */
+    .life-entry {
+      display: flex;
+      gap: 1.8rem;
+      margin-bottom: 2.2rem;
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .life-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .life-side {
+      flex: 1;
+      order: 2;
+      padding-top: 0;
+      height: 260px;
+      border-left: 2px solid var(--border);
+      padding-left: 0.9rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .life-dates {
+      font-size: 0.83rem;
+      color: #9a7050;
+      margin-bottom: 0.5rem;
+    }
+
+    .life-date-char {
+      position: relative;
+      display: inline-block;
+      overflow: clip;
+      height: 1.3em;
+      line-height: 1.3em;
+      white-space: pre;
+      vertical-align: bottom;
+    }
+    .life-date-char-ghost {
+      visibility: hidden;
+    }
+    .life-date-char-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+    }
+
+    .life-caption {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .life-content { width: 400px; flex-shrink: 0; order: 1; }
+
+    .life-slideshow {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 2.6;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.04);
+    }
+
+    .life-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: rgba(0,0,0,0.35);
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 2.4s ease;
+    }
+    .life-slide.active { opacity: 1; }
+    .life-reel-strip {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      z-index: 5;
+    }
+    .life-reel-frame {
+      flex: none;
+      height: 100%;
+    }
+    .life-reel-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .life-slide i { font-size: 1.6rem; }
+    .life-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .life-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0,0,0,0.32);
+      color: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.2s;
+      z-index: 2;
+    }
+    .life-slideshow:hover .life-nav { opacity: 1; }
+    .life-nav:hover { background: rgba(0,0,0,0.55); }
+    .life-nav-prev { left: 0.6rem; }
+    .life-nav-next { right: 0.6rem; }
+
+    .life-dots {
+      position: absolute;
+      bottom: 0.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .life-dots .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(0,0,0,0.15);
+      transition: background 0.2s;
+    }
+    .life-dots .dot.active { background: var(--link); border-color: var(--link); }
+
+    .life-player {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 0.7rem;
+    }
+
+    .life-youtube {
+      margin-top: 0.7rem;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--border);
+    }
+    .life-youtube iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .life-play-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--paper);
+      color: var(--link);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      font-size: 0.72rem;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .life-play-btn:hover { color: var(--link-h); border-color: var(--link-h); }
+
+    .life-track-info { flex: 1; min-width: 0; }
+
+    .life-track-title {
+      font-size: 0.82rem;
+      color: var(--sub);
+      font-style: italic;
+      margin-bottom: 0.3rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .life-progress {
+      height: 3px;
+      background: rgba(0,0,0,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .life-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--link);
+      border-radius: 2px;
+      transition: width 0.15s linear;
+    }
+    .life-progress-bar.playing { animation: life-progress-fill 20s linear forwards; }
+    @keyframes life-progress-fill { from { width: 0%; } to { width: 100%; } }
+
+    @media (max-width: 560px) {
+      .life-entry { flex-direction: column; gap: 0.9rem; }
+      .life-content { width: 100%; order: 1; }
+      .life-side { order: 2; padding-top: 0; }
+    }
+
+    .pub-row {
+      display: flex;
+      gap: 1.4rem;
+      margin-bottom: 1.6rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .pub-row:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .pub-thumb-placeholder {
+      width: 180px;
+      height: 120px;
+      flex-shrink: 0;
+      background: rgba(0,0,0,0.04);
+      border-radius: 3px;
+      border: 1px solid var(--border);
+    }
+
+    .pub-thumb {
+      width: 180px;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: 3px;
+      align-self: flex-start;
+      border: 1px solid var(--border);
+      cursor: zoom-in;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transform-origin: top left;
+    }
+    .pub-thumb:hover {
+      transform: scale(2.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      position: relative;
+      z-index: 10;
+    }
+
+    .pub-meta { flex: 1; }
+
+    .pub-title {
+      font-weight: 600;
+      color: #2a1a08;
+      margin-bottom: 0.2rem;
+      line-height: 1.4;
+      font-size: 0.97rem;
+    }
+
+    .pub-authors {
+      color: var(--text);
+      font-size: 0.86rem;
+      margin-bottom: 0.1rem;
+    }
+    .pub-authors .me { font-weight: 600; font-style: normal; }
+
+    .pub-venue {
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .pub-links { font-size: 0.83rem; }
+    .pub-links a { color: var(--link); }
+    .pub-links a:hover { color: var(--link-h); }
+    .pub-links a + a::before { content: " / "; color: var(--text); display: inline-block; text-decoration: none; }
+
+    @media (max-width: 560px) {
+      .pub-row { flex-direction: column; }
+      .pub-thumb { width: 100%; }
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: #9a7050;
+      font-style: italic;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      :root { --pad-x: 1.75rem; }
+      .outer { padding: 0 0 4rem; }
+      .sheet { box-shadow: none; }
+      body { background: var(--paper); }
+    }
+    @media (max-width: 480px) {
+      :root { --pad-x: 1.25rem; }
+      .hero-name { font-size: 2rem; }
+      .hero-header { flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+      .hero-photo, .hero-photo-fallback { width: 110px; height: 110px; }
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+<div class="sheet">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-header">
+      <img
+        src="img/misc/prof_pic.jpg"
+        alt="Arjun Chandra"
+        class="hero-photo"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="hero-photo-fallback" style="display:none">AC</div>
+      <div class="hero-text">
+        <div class="hero-name">Arjun Chandra</div>
+        <div class="hero-title">CS PhD Student, Stanford University <img src="img/misc/stanford_favicon.png" alt="Stanford" style="width:17px;height:17px;vertical-align:-2.5px;margin:0 0 0 1px;"></div>
+        <div class="social">
+          <a href="mailto:arjun.chandra@stanford.edu"><i class="fa-solid fa-envelope"></i> arjun.chandra@stanford.edu</a>
+          <a href="https://scholar.google.com/citations?user=IYcIR78AAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+          <a href="https://github.com/arjunchandra2" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="https://www.linkedin.com/in/arjun-chandra2" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="assets/pdf/cv.pdf"><i class="fa-solid fa-file-lines"></i> CV</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-bio">
+      <p>
+        Hello! I am a PhD student in the computer science department at Stanford.
+        I am interested in the intersection of machine learning, cognitive science, and neuroscience.
+        I am grateful to be supported by an NSF Graduate Research Fellowship.
+      </p>
+      <p>
+        Previously, I was an undergrad at Boston University, where I studied physics and computer science.
+        I was very fortunate to be advised by
+        <a href="https://boqinggong.github.io/" target="_blank">Boqing Gong</a>,
+        <a href="https://venkatesh-saligrama.github.io/" target="_blank">Venkatesh Saligrama</a>,
+        and <a href="https://www.bu.edu/eng/profile/irving-bigio/" target="_blank">Irving Bigio</a> during this time.
+        I also spent a summer working on conversational recommendation systems at Adobe.
+        I am best reached by email.
+      </p>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs-row">
+    <span class="research-heading" data-panel="panel-research"><span class="brush brush-gold">Research<svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M2,18 C10,4 25,10 40,6 C55,2 70,12 85,8 C92,6 98,14 98,22 C98,30 90,26 80,32 C65,38 50,28 35,34 C20,40 8,32 2,30 C-2,26 -1,20 2,18 Z"/></svg></span></span>
+    <span class="research-heading" data-panel="panel-experience"><span class="brush brush-coral">Experience<svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M2,20 C12,6 28,12 42,4 C58,-2 72,10 88,6 C94,8 98,16 96,24 C94,32 84,26 74,34 C60,42 46,30 32,36 C18,42 6,34 2,32 C-2,28 -1,22 2,20 Z"/></svg></span></span>
+    <span class="research-heading" data-panel="panel-life"><span class="brush brush-sage">Life<svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M3,16 C14,2 30,14 44,4 C60,-4 76,8 90,4 C96,8 98,16 95,22 C92,30 82,24 72,32 C58,40 44,26 30,34 C16,40 6,32 3,28 C0,24 0,18 3,16 Z"/></svg></span></span>
+  </div>
+
+  <!-- RESEARCH -->
+  <div class="research-section panel" id="panel-research">
+    <div class="research-body">
+
+    <div class="pub-row">
+      <img class="pub-thumb" src="img/papers/icml26.png" alt="">
+      <div class="pub-meta">
+        <div class="pub-title">Symmetry Reveals Layerwise Dynamics: How Transformers Perform In-Context Classification</div>
+        <div class="pub-authors">P. Lutz, T. Haris, <span class="me">A. Chandra</span>, A. Gangrade, V. Saligrama</div>
+        <div class="pub-venue">ICML 2026 Spotlight</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2604.11613" target="_blank">arXiv</a>
+          <a href="https://github.com/LutzPatrick/ICL-Symmetry" target="_blank">code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-row">
+      <img class="pub-thumb" src="img/papers/babyvlm_v2.png" alt="">
+      <div class="pub-meta">
+        <div class="pub-title">BabyVLM-V2: Toward Developmentally Grounded Pretraining and Benchmarking of Vision Foundation Models</div>
+        <div class="pub-authors">S. Wang, W. Wang, Z. Wang, …, <span class="me">A. Chandra</span>, …, B. Gong</div>
+        <div class="pub-venue">CVPR 2026</div>
+        <div class="pub-links">
+          <a href="http://arxiv.org/abs/2512.10932" target="_blank">arXiv</a>
+          <a href="https://shawnking98.github.io/BabyVLM-v2/" target="_blank">website</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-row">
+      <img class="pub-thumb" src="img/papers/eacl26.png" alt="">
+      <div class="pub-meta">
+        <div class="pub-title">Hearing Between the Lines: Unlocking the Reasoning Power of LLMs for Speech Evaluation</div>
+        <div class="pub-authors"><span class="me">A. Chandra*</span>, K. Miller*, V. Ravichandran, C. Papayiannis, V. Saligrama &ensp;<em style="font-size:.82em;color:#9a7050">*equal contribution</em></div>
+        <div class="pub-venue">EACL 2026 Findings</div>
+        <div class="pub-links">
+          <a href="http://arxiv.org/abs/2601.13742" target="_blank">arXiv</a>
+          <a href="https://github.com/arjunchandra2/TRACE" target="_blank">code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-row">
+      <img class="pub-thumb" src="img/papers/babyvlm.png" alt="">
+      <div class="pub-meta">
+        <div class="pub-title">BabyVLM: Data-Efficient Pretraining of VLMs Inspired by Infant Learning</div>
+        <div class="pub-authors">S. Wang, <span class="me">A. Chandra</span>, A. Liu, V. Saligrama, B. Gong</div>
+        <div class="pub-venue">ICCV 2025</div>
+        <div class="pub-links">
+          <a href="http://arxiv.org/abs/2504.09426" target="_blank">arXiv</a>
+          <a href="https://shawnking98.github.io/BabyVLM" target="_blank">website</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-row">
+      <img class="pub-thumb" src="img/papers/aaai_t2v.png" alt="">
+      <div class="pub-meta">
+        <div class="pub-title">Rewind and Render: Towards Factually Accurate Text-to-Video Generation with Distilled Knowledge Retrieval</div>
+        <div class="pub-authors">D. Lee*, <span class="me">A. Chandra*</span>, Y. Zhou, Y. Li, S. Conia &ensp;<em style="font-size:.82em;color:#9a7050">*equal contribution</em></div>
+        <div class="pub-venue">AAAI 2025</div>
+        <div class="pub-links">
+          <a href="https://doi.org/10.1609/aaai.v39i28.35356" target="_blank">doi</a>
+          <a href="https://github.com/danieljsklee/factv" target="_blank">code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-row">
+      <img class="pub-thumb" src="img/papers/nph.png" alt="">
+      <div class="pub-meta">
+        <div class="pub-title">Accelerating myelin defect detection in neurodegenerative disorders: a human-in-the-loop deep learning approach with birefringence microscopy</div>
+        <div class="pub-authors">A. Novoseltseva, <span class="me">A. Chandra</span>, A. J. Gray, S. Li, M. Bradsby, I. J. Bigio</div>
+        <div class="pub-venue">Neurophotonics, 2025</div>
+        <div class="pub-links">
+          <a href="https://doi.org/10.1117/1.NPh.12.4.045007" target="_blank">doi</a>
+          <a href="https://github.com/arjunchandra2/Myelin-Defect-Detection" target="_blank">code</a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="research-section panel" id="panel-experience">
+    <div class="research-body">
+
+    <div class="exp-row">
+      <div class="exp-logo">
+        <img src="img/misc/adobe_logo.png" alt="Adobe">
+      </div>
+      <div class="exp-meta">
+        <div class="exp-title-row">
+          <div class="exp-org">Adobe &middot; San Jose, CA</div>
+          <div class="exp-dates">May 2024 &ndash; Aug 2024</div>
+        </div>
+        <div class="exp-title">AI/ML Intern &mdash; Machine Learning Engineer</div>
+        <ul class="exp-desc">
+          <li>Implemented and deployed a scalable LLM-based recommendation engine on roadmap for future release in Adobe Experience Platform AI Assistant</li>
+        </ul>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- LIFE -->
+  <div class="research-section panel" id="panel-life">
+    <div class="research-body">
+
+    <div class="life-entry">
+      <div class="life-content">
+        <div class="life-slideshow">
+          <div class="life-slide active"><img src="img/life/slides1/slide-01.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-02.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-03.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-04.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-05.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-06.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-07.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-08.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-09.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-10.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-11.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-12.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-13.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-14.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-15.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-16.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-17.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-18.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-19.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-20.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-21.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-22.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-23.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-24.jpg" alt=""></div>
+          <div class="life-slide"><img src="img/life/slides1/slide-25.jpg" alt=""></div>
+          <button class="life-nav life-nav-prev" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="life-nav life-nav-next" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="life-player">
+          <button class="life-play-btn"><i class="fa-solid fa-play"></i></button>
+          <div class="life-track-info">
+            <div class="life-track-title">I Have a Tear in My Mind &mdash; Bryant Sid</div>
+            <div class="life-progress"><div class="life-progress-bar"></div></div>
+          </div>
+          <audio class="life-audio" src="img/life/audio/tear-in-my-mind.m4a" preload="none"></audio>
+        </div>
+      </div>
+      <div class="life-side">
+        <div class="life-dates"></div>
+        <p class="life-caption">&ldquo;It happens that the stage sets collapse. Rising, streetcar, four hours in the office or the factory, meal, streetcar, four hours of work, meal, sleep, and Monday Tuesday Wednesday Thursday Friday and Saturday according to the same rhythm&mdash;this path is easily followed most of the time. But one day the &lsquo;why&rsquo; arises, and everything begins in that weariness tinged with amazement.&rdquo;<br><span style="color: #9a7050; font-size: 0.85rem;">&mdash; Albert Camus, <em>The Myth of Sisyphus</em></span></p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Arjun Chandra &middot; Palo Alto, CA &middot; Last updated June 2026
+  </div>
+
+</div><!-- .sheet -->
+</div><!-- .outer -->
+
+<script>
+  var lifeSlideDates = [
+    'Oct 21, 2021', 'Nov 01, 2021', 'Nov 19, 2021', 'Dec 04, 2021',
+    'Jan 15, 2022', 'Feb 21, 2022', 'Sep 02, 2022', 'Sep 15, 2022',
+    'Nov 25, 2022', 'Dec 24, 2022', 'Dec 24, 2022', 'Dec 24, 2022',
+    'Jan 01, 2023', 'Jan 03, 2023', 'Mar 19, 2023', 'Mar 24, 2023',
+    'Apr 02, 2023', 'Apr 29, 2023', 'May 03, 2023', 'Jun 19, 2023',
+    'Sep 15, 2023', 'Dec 28, 2023', 'Mar 13, 2024', 'Nov 28, 2024',
+    'Apr 22, 2025'
+  ];
+
+  function renderDateChars(container, str) {
+    container.innerHTML = '';
+    str.split('').forEach(function(ch) {
+      var slot = document.createElement('span');
+      slot.className = 'life-date-char';
+      var ghost = document.createElement('span');
+      ghost.className = 'life-date-char-ghost';
+      ghost.textContent = ch;
+      slot.appendChild(ghost);
+      var inner = document.createElement('span');
+      inner.className = 'life-date-char-inner';
+      inner.textContent = ch;
+      inner.style.transform = 'translateY(0)';
+      slot.appendChild(inner);
+      slot.dataset.ch = ch;
+      container.appendChild(slot);
+    });
+  }
+
+  function flipChar(slot, ch, durationMs) {
+    var ghost = slot.querySelector('.life-date-char-ghost');
+    if (ghost) ghost.textContent = ch;
+    var existingInners = slot.querySelectorAll('.life-date-char-inner');
+    var oldInner = existingInners[existingInners.length - 1];
+    var newInner = document.createElement('span');
+    newInner.className = 'life-date-char-inner';
+    newInner.textContent = ch;
+    newInner.style.transition = 'none';
+    newInner.style.transform = 'translateY(100%)';
+    slot.appendChild(newInner);
+    slot.dataset.ch = ch;
+    oldInner.style.transition = 'none';
+    newInner.getBoundingClientRect();
+    requestAnimationFrame(function() {
+      newInner.style.transition = 'transform ' + durationMs + 'ms cubic-bezier(.4,0,.2,1)';
+      oldInner.style.transition = 'transform ' + durationMs + 'ms cubic-bezier(.4,0,.2,1)';
+      oldInner.style.transform = 'translateY(-100%)';
+      newInner.style.transform = 'translateY(0)';
+    });
+    setTimeout(function() {
+      if (oldInner.parentNode) oldInner.remove();
+    }, durationMs + 40);
+  }
+
+  function spinDigit(slot, targetCh) {
+    var current = parseInt(slot.dataset.ch, 10);
+    if (isNaN(current)) { flipChar(slot, targetCh, 320); return; }
+    var target = parseInt(targetCh, 10);
+    var distance = ((target - current) % 10 + 10) % 10;
+    var totalSteps = distance + 10; // one extra full lap for a real "scrolling" feel
+    var i = 0;
+    function nextStep() {
+      if (i >= totalSteps) return;
+      var isLast = i === totalSteps - 1;
+      var dur = isLast ? 300 : 55;
+      var digit = (current + i + 1) % 10;
+      flipChar(slot, String(digit), dur);
+      i++;
+      setTimeout(nextStep, dur);
+    }
+    nextStep();
+  }
+
+  function updateDateChars(container, str) {
+    var slots = container.querySelectorAll('.life-date-char');
+    var chars = str.split('');
+    if (slots.length !== chars.length) { renderDateChars(container, str); return; }
+    chars.forEach(function(ch, i) {
+      var slot = slots[i];
+      if (slot.dataset.ch === ch) return;
+      if (/[0-9]/.test(ch)) {
+        spinDigit(slot, ch);
+      } else {
+        flipChar(slot, ch, 320);
+      }
+    });
+  }
+
+  document.querySelectorAll('.life-entry').forEach(function(entry) {
+    var slideshow = entry.querySelector('.life-slideshow');
+    var slides = slideshow ? slideshow.querySelectorAll('.life-slide') : [];
+    var dots = slideshow ? slideshow.querySelectorAll('.dot') : [];
+    var dateEl = entry.querySelector('.life-dates');
+    var idx = 0;
+    var timer = null;
+
+    if (dateEl && lifeSlideDates[idx]) renderDateChars(dateEl, lifeSlideDates[idx]);
+
+    function showSlide(newIdx) {
+      slides[idx].classList.remove('active');
+      if (dots.length) dots[idx].classList.remove('active');
+      idx = ((newIdx % slides.length) + slides.length) % slides.length;
+      slides[idx].classList.add('active');
+      if (dots.length) dots[idx].classList.add('active');
+      if (dateEl && lifeSlideDates[idx]) updateDateChars(dateEl, lifeSlideDates[idx]);
+    }
+    function startSlideshow() {
+      if (timer || slides.length < 2) return;
+      timer = setInterval(function() { showSlide(idx + 1); }, 6552);
+    }
+    function stopSlideshow() {
+      clearInterval(timer);
+      timer = null;
+    }
+    function manualNav(step) {
+      var wasPlaying = !!timer;
+      stopSlideshow();
+      showSlide(idx + step);
+      if (wasPlaying) startSlideshow();
+    }
+
+    function introReel() {
+      if (!slideshow || slides.length < 2) return;
+      var order = [0];
+      for (var s = slides.length - 1; s >= 1; s--) order.push(s);
+      var strip = document.createElement('div');
+      strip.className = 'life-reel-strip';
+      order.forEach(function(i) {
+        var frame = document.createElement('div');
+        frame.className = 'life-reel-frame';
+        var img = document.createElement('img');
+        img.src = slides[i].querySelector('img').src;
+        frame.appendChild(img);
+        strip.appendChild(frame);
+      });
+      var w = slideshow.getBoundingClientRect().width;
+      strip.querySelectorAll('.life-reel-frame').forEach(function(f) { f.style.width = w + 'px'; });
+      strip.style.width = (order.length * w) + 'px';
+      strip.style.transition = 'none';
+      strip.style.transform = 'translateX(' + (-(order.length - 1) * w) + 'px)';
+      slideshow.appendChild(strip);
+      strip.getBoundingClientRect();
+      requestAnimationFrame(function() {
+        strip.style.transition = 'transform 2000ms cubic-bezier(.1,.6,.15,1)';
+        strip.style.transform = 'translateX(0px)';
+      });
+      setTimeout(function() {
+        if (strip.parentNode) strip.remove();
+      }, 2050);
+    }
+
+    function resetSlides() {
+      slides[idx].classList.remove('active');
+      if (dots.length) dots[idx].classList.remove('active');
+      idx = 0;
+      slides[idx].classList.add('active');
+      if (dots.length) dots[idx].classList.add('active');
+    }
+
+    entry._lifePlayIntro = function() {
+      stopSlideshow();
+      resetSlides();
+      var target = lifeSlideDates[0];
+      if (dateEl && target) {
+        renderDateChars(dateEl, 'Feb 02, 2003');
+        updateDateChars(dateEl, target);
+      }
+      introReel();
+    };
+
+    var prevBtn = slideshow ? slideshow.querySelector('.life-nav-prev') : null;
+    var nextBtn = slideshow ? slideshow.querySelector('.life-nav-next') : null;
+    if (prevBtn) prevBtn.addEventListener('click', function() { manualNav(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { manualNav(1); });
+
+    var player = entry.querySelector('.life-player');
+    if (!player) return;
+    var btn = player.querySelector('.life-play-btn');
+    var icon = btn.querySelector('i');
+    var bar = player.querySelector('.life-progress-bar');
+    var audio = player.querySelector('.life-audio');
+
+    if (audio) {
+      btn.addEventListener('click', function() {
+        if (audio.paused) { audio.play(); } else { audio.pause(); }
+      });
+      audio.addEventListener('play', function() {
+        icon.classList.remove('fa-play'); icon.classList.add('fa-pause');
+        startSlideshow();
+      });
+      audio.addEventListener('pause', function() {
+        icon.classList.remove('fa-pause'); icon.classList.add('fa-play');
+        stopSlideshow();
+      });
+      audio.addEventListener('timeupdate', function() {
+        if (audio.duration) bar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      });
+      audio.addEventListener('ended', function() {
+        bar.style.width = '0%';
+        stopSlideshow();
+      });
+    } else {
+      btn.addEventListener('click', function() {
+        var playing = icon.classList.contains('fa-pause');
+        icon.classList.toggle('fa-play', playing);
+        icon.classList.toggle('fa-pause', !playing);
+        bar.classList.toggle('playing', !playing);
+        if (playing) { stopSlideshow(); } else { startSlideshow(); }
+      });
+    }
+
+  });
+
+  function closePanel(panel) {
+    panel.classList.remove('open');
+    var heading = document.querySelector('.research-heading[data-panel="' + panel.id + '"]');
+    if (heading) heading.classList.remove('active');
+    panel.querySelectorAll('.life-audio').forEach(function(audio) { audio.pause(); });
+    panel.querySelectorAll('.life-player').forEach(function(player) {
+      var icon = player.querySelector('.life-play-btn i');
+      var bar = player.querySelector('.life-progress-bar');
+      if (icon) { icon.classList.remove('fa-pause'); icon.classList.add('fa-play'); }
+      if (bar) bar.classList.remove('playing');
+    });
+  }
+
+  document.querySelectorAll('.research-heading[data-panel]').forEach(function(heading) {
+    var panel = document.getElementById(heading.dataset.panel);
+    if (!panel) return;
+    heading.addEventListener('click', function() {
+      var alreadyOpen = panel.classList.contains('open');
+
+      document.querySelectorAll('.panel.open').forEach(function(openPanel) {
+        if (openPanel !== panel) closePanel(openPanel);
+      });
+
+      if (alreadyOpen) {
+        closePanel(panel);
+      } else {
+        panel.classList.add('open');
+        heading.classList.add('active');
+        panel.querySelectorAll('.life-entry').forEach(function(entry) {
+          if (entry._lifePlayIntro) entry._lifePlayIntro();
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
