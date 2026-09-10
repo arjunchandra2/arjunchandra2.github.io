@@ -1054,6 +1054,13 @@
     heading.addEventListener('click', function() {
       var alreadyOpen = panel.classList.contains('open');
 
+      if (typeof gtag === 'function') {
+        gtag('event', 'tab_click', {
+          tab_name: heading.dataset.panel.replace('panel-', ''),
+          action: alreadyOpen ? 'close' : 'open'
+        });
+      }
+
       document.querySelectorAll('.panel.open').forEach(function(openPanel) {
         if (openPanel !== panel) closePanel(openPanel);
       });
